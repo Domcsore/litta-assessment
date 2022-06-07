@@ -11,7 +11,12 @@ export const useFetch = (endpoint) => {
       setLoading(true);
       try {
         const fetchResponse = await window.fetch(internalEndpoint);
-        // TODO handle response data;
+        if (fetchResponse.status === 200) {
+          const responseJson = await fetchResponse.json();
+          setData(responseJson);
+        } else {
+          setError('Could not fetch request');
+        }
       } catch(e) {
         // Option to handle different error responses.
         if (e instanceof DOMException) {
