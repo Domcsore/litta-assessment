@@ -35,13 +35,17 @@ const CountryTable = () => {
     }
   }
 
+  const displayTextIfAvailable = (displayText) => {
+    return displayText ? displayText : ' - Not available -';
+  }
+
   const renderTableRows = () => {
     return data.map(d => 
-      <tr>
-        <td>{d.name}</td>
-        <td>{d.capital}</td>
-        <td>{d.phoneCode}</td>
-        <td>{d.currencyCode}</td>
+      <tr key={d.code}>
+        <td>{displayTextIfAvailable(d.name)}</td>
+        <td>{displayTextIfAvailable(d.capital)}</td>
+        <td>{displayTextIfAvailable(d.phoneCode)}</td>
+        <td>{displayTextIfAvailable(d.currencyCode)}</td>
       </tr>
     )
   }

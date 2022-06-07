@@ -14,7 +14,6 @@ export const useFetch = (endpoint) => {
         const fetchResponse = await window.fetch(internalEndpoint, {method: 'get'});
         if (fetchResponse.status === 200) {
           const responseJson = await fetchResponse.json();
-          console.log(responseJson);
           setData(responseJson);
         } else {
           setError('Could not fetch request');
