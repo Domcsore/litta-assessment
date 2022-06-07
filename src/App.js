@@ -1,8 +1,13 @@
 import './App.css';
 
+import './components/CountryTable';
+import CountryTable from './components/CountryTable';
+
 function App() {
   return (
-    <div></div>
+    <div id="app">
+      <CountryTable />
+    </div>
   );
 }
 

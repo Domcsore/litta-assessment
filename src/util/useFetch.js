@@ -11,9 +11,10 @@ export const useFetch = (endpoint) => {
     const fetchData = async (internalEndpoint) => {
       setLoading(true);
       try {
-        const fetchResponse = await window.fetch(internalEndpoint);
+        const fetchResponse = await window.fetch(internalEndpoint, {method: 'get'});
         if (fetchResponse.status === 200) {
           const responseJson = await fetchResponse.json();
+          console.log(responseJson);
           setData(responseJson);
         } else {
           setError('Could not fetch request');
@@ -36,4 +37,20 @@ export const useFetch = (endpoint) => {
   }, [endpoint]);
 
   return [data, loading, error];
+}
+
+export const useFetchCountryNames = () => {
+  return useFetch('http://country.io/names.json');
+}
+
+export const useFetchCapitals = () => {
+  return useFetch('http://country.io/capital.json');
+}
+
+export const useFetchPhoneCodes = () => {
+  return useFetch('http://country.io/phone.json');
+}
+
+export const useFetchCurrencyCodes = () => {
+  return useFetch('http://country.io/currency.json');
 }
