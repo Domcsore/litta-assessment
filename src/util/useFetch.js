@@ -1,6 +1,7 @@
 import React from 'react';
 
 // useFetch hook takes a string 'endpoint' and fetches data using a get request.
+// Note - I would have used a more granular error state for better consumption.
 export const useFetch = (endpoint) => {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
